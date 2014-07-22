@@ -59,10 +59,11 @@ class Organization < ActiveRecord::Base
   end
 
   #
-  # Returns the pending +ContributorRequests+s for the organization.
+  # Returns the pending +ContributorRequest+s for the user. Eager loads the
+  # associated +User+ # because it is used in the views to display and link to
+  # the +User+.
   #
-  # TODO: doc this better
-  # TODO: see if this can be done w/ sql?
+  # @return [Array<ContributorRequest>] array of pending +ContributorRequest+s
   #
   def pending_requests_to_join
     ContributorRequest.includes(
