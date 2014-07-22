@@ -229,6 +229,21 @@ class User < ActiveRecord::Base
   end
 
   #
+  # Returns the pending +ContributorRequest+s for a user.
+  #
+  # TODO: doc this better
+  # TODO: see if this can be done w/ sql?
+  #
+  def pending_contributor_requests
+    ContributorRequest.includes(
+      :contributor_request_response,
+      :organization
+    ).where(
+      user: self
+    ).select { |cr| cr.pending? }
+  end
+
+  #
   # Returns a unique +ActiveRecord::Relation+ of all users who have signed
   # either the ICLA or CCLA or are a contributor on behalf of one or
   # more +Organization+s. Sorts the users by their Chef account username.
