@@ -110,6 +110,7 @@ Supermarket::Application.routes.draw do
   resources :organizations, only: [:show, :destroy] do
     member do
       put :combine
+      get :requests_to_join
     end
 
     resources :contributors, only: [:update, :destroy], controller: :contributors
