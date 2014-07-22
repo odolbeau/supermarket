@@ -24,6 +24,7 @@ class OrganizationAuthorizer < Authorizer::Base
     organization_or_supermarket_admin?
   end
 
+  #
   # Supermarket admins can manage organizations
   #
   # @return [Boolean]
