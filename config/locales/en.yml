@@ -10,6 +10,7 @@ en:
   cookbook:
     transfered_ownership: "%{cookbook} transferred to %{user}."
     deprecated: "%{cookbook} deprecated in favor of %{replacement_cookbook}."
+    deprecate_failure: "%{cookbook} failed to deprecate."
   contributor_requests:
     accept:
       success: "%{username} is now authorized to contribute on behalf of %{organization}."
