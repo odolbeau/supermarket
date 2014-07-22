@@ -57,4 +57,18 @@ class Organization < ActiveRecord::Base
       organization.reload.destroy
     end
   end
+
+  #
+  # Returns the pending +ContributorRequests+s for the organization.
+  #
+  # TODO: doc this better
+  # TODO: see if this can be done w/ sql?
+  #
+  def pending_requests_to_join
+    ContributorRequest.includes(
+      :user
+    ).where(
+      organization: self
+    ).select { |cr| cr.pending? }
+  end
 end
