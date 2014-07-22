@@ -153,6 +153,9 @@ describe Cookbook do
 
       expect(cookbook.replacement).to eql(replacement_cookbook)
     end
+
+    it 'fails to deprecate if the replacement is already deprecated' do
+    end
   end
 
   describe '#get_version!' do
