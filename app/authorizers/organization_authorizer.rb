@@ -69,6 +69,14 @@ class OrganizationAuthorizer < Authorizer::Base
       record.contributor_requests.where(user_id: user.id).empty?
   end
 
+  #
+  # A user who is an organization admin or a Supermarket admin can
+  # manage the requests to join
+  #
+  def manage_requests_to_join?
+    organization_or_supermarket_admin?
+  end
+
   private
 
   def organization_or_supermarket_admin?
